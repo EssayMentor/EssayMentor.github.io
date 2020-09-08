@@ -17,12 +17,17 @@
 		<link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
 
 		<style>
+			html {
+				height: 100%;
+			}
 			body {
 				color: #434343;
 				font-family: 'Nunito Sans', sans-serif;
 				font-size: 14px;
 				font-weight: 600;
+				height: 100%;
 				margin: 0;
+				overflow: hidden;
 			}
 			h1, h2, h3 {
 				margin: 0;
@@ -38,6 +43,10 @@
 				list-style: none;
 				margin: 0;
 				padding: 0
+			}
+			ul {
+				align-items: center;
+				display: flex;
 			}
 			li {
 				display: inline-block;
@@ -81,6 +90,13 @@
 				background-color: #ff5b97;
 				color: white;
 			}
+			.ease {
+				-webkit-transition: all 500ms ease;
+				-moz-transition: all 500ms ease;
+				-ms-transition: all 500ms ease;
+				-o-transition: all 500ms ease;
+				transition: all 500ms ease;
+			}
 			.indigo {
 				color: #2a1e68;
 			}
@@ -117,6 +133,13 @@
 				display: inline-block;
 				margin: 2.8em 12px 0 0;
 			}
+			#loader {
+				background-color: white;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				top: 0;
+			}
 
 			@media only screen and (max-width: 974px) {
 				.header ul {
@@ -133,96 +156,116 @@
 
 		<script>
 			function onLoad() {
+				var loader = document.getElementById('loader');
+				loader.style.opacity = '0';
 
+				setTimeout(function(){
+					loader.style.display = 'none';
+				}, 600);
 			}
 		</script>
 
 	</head>
 	<body onload="onLoad()">
-		<div class="banner">
-			This program will run throughout the 2020-2021 school year.
-		</div>
-		<div class="block header">
-			<span class="magenta" style="font-size: 18px;">
-				<img src="./img/book.png" alt="book-open" width="20" height="15" aria-hidden="true">
-				<span class="bold nunito">EssayMentor.org</span>
-			</span>
-			<ul>
-				<li>
-					<a href="#program">Program</a>
-				</li>
-				<li>
-					<a href="#contact">Contact</a>
-				</li>
-				<!--li>
-					<a>Resources</a>
-				</li-->
-				<li>
-					<a class="bold button magenta" href="#sign-up">Sign-Up</a>
-				</li>
-			</ul>
-		</div>
-
-		<div class="block hero right">
-			<div>
-				<h1 class="magenta nunito">MentorMe</h1>
-				<h3 class="bold nunito">College Essay Mentoring Program</h3>
-				<p><span class="bold magenta">MentorMe</span> is a program that helps <span class="bold">low-income high-school seniors of color</span> with their college essays.</p>
-				<p>The essay portion is one of the most important pieces for college applications <span class="bold">and it is the best way to show colleges what makes you unique.</span> Students will be paired with a mentor and have weekly one-on-one sessions to draft, edit, and revise essays.</p>
-				<a class="bold button solid magenta" href="#sign-up">Sign-Up</a>
-				<a class="bold button magenta" href="#contact">Contact</a>
+		<div style="height: 100%; overflow: auto;">
+			<div class="banner" style="margin-bottom: 10px;">
+				This program will run throughout the 2020-2021 school year.
+			</div>
+			<div class="block header">
+				<span class="magenta" style="font-size: 18px;">
+					<img src="./img/book.png" alt="book-open" width="20" height="15" aria-hidden="true">
+					<span class="bold nunito">EssayMentor.org</span>
+				</span>
+				<ul>
+					<li>
+						<a href="#program">Program</a>
+					</li>
+					<li>
+						<a href="#contact">Contact</a>
+					</li>
+					<!--li>
+						<a>Resources</a>
+					</li-->
+					<li>
+						<a class="bold" href="#sign-up">Sign-Up</a>
+					</li>
+					<li>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin-bottom: -5px;">
+							<input type="hidden" name="cmd" value="_donations"/>
+							<input type="hidden" name="business" value="TCL7ZTS9YAJ82"/>
+							<input type="hidden" name="item_name" value="Essay Mentor"/>
+							<input type="hidden" name="currency_code" value="USD"/>
+							<input type="image" src="./img/donate.png" border="0" height="28" width="76" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"/>
+						</form>
+					</li>
+				</ul>
 			</div>
 
-			<img src="./img/mentorme.png" alt="mentor-me" aria-hidden="true">
-		</div>
-
-		<div class="block hero left" id="program">
-			<img src="./img/students.png" alt="students" aria-hidden="true">
-
-			<div>
-				<h2 class="magenta nunito">For High-School Students</h2>
-				<p>Students will meet with their assigned mentor weekly for one-on-one meetings to draft, edit, and revise essays for their college applications. These meetings will be set up with your mentor based on your availability.</p>
-				<p>A syllabus of weekly assigned topics/short assignments for the student will be provided. These topics will cover college essay questions that require pulling from your personal experiences.</p>
-				<p class="bold">If you are interested, please click the button below and fill out the Google Form.</p>
-				<a class="bold button solid magenta" href="https://docs.google.com/forms/d/e/1FAIpQLSd46rkyUPxpQ0fYvBLLBPpg804v7a4SIg-AV7yipZACpAsXCw/viewform?usp=sf_link" target="_blank">Get Started</a>
-			</div>
-		</div>
-
-		<div class="block hero right">
-			<div>
-				<h2 class="magenta nunito">For Mentors</h2>
-				<p>Mentors will hold weekly one-on-one meetings with their assigned student to draft, edit, and revise essays for their college applications.</p>
-				<p>A syllabus of weekly assigned topics/assignments for the student will be provided and serve as a guide for mentors. These topics will cover college essay questions, identities, adversity, and more.</p>
-				<p class="bold">We encourage BIPOC and individuals from low-income backgrounds to apply.</p>
-				<p>This program has a flexible schedule. You will work with the student to find a time that works best to meet virtually. Mentors are expected to attend monthly meetings for check-ins. These meetings will be scheduled ahead of time based on your availability.</p>
-				<p>This is a volunteer position and you will not be compensated.</p>
-				<p class="bold">If you are interested, please click the button below and fill out the Google Form.</p>
-				<a class="bold button solid magenta" href="https://docs.google.com/forms/d/e/1FAIpQLSeX0ydxFGPY57UnnWtR1db9xkvBkfJdSDJWS3rL8AG0JPCQUA/viewform?usp=sf_link" target="_blank">Become A Mentor</a>
-			</div>
-
-			<img src="./img/mentor.png" alt="mentor" aria-hidden="true">
-		</div>
-
-		<div class="banner" id="contact">
-			<div class="block hero" style="flex-direction: column;">
+			<div class="block hero right">
 				<div>
-					<h2>Contact Us!</h2>
-					<p>Email our program director Sandy Lor at sandylor24@gmail.com or sign-up using the form below.</p>
-					<a class="bold button solid" href="mailto:sandylor24@gmail.com">Email</a>
-					<a class="bold button" href="#sign-up">Sign-Up</a>
+					<h1 class="magenta nunito">MentorMe</h1>
+					<h3 class="bold nunito">College Essay Mentoring Program</h3>
+					<p><span class="bold magenta">MentorMe</span> is a program that helps <span class="bold">low-income high-school seniors of color</span> with their college essays.</p>
+					<p>The essay portion is one of the most important pieces for college applications <span class="bold">and it is the best way to show colleges what makes you unique.</span> Students will be paired with a mentor and have weekly one-on-one sessions to draft, edit, and revise essays.</p>
+					<a class="bold button solid magenta" href="#sign-up">Sign-Up</a>
+					<a class="bold button magenta" href="#contact">Contact</a>
+				</div>
+
+				<img src="./img/mentorme.png" alt="mentor-me" aria-hidden="true">
+			</div>
+
+			<div class="block hero left" id="program">
+				<img src="./img/students.png" alt="students" aria-hidden="true">
+
+				<div>
+					<h2 class="magenta nunito">For High-School Students</h2>
+					<p>Students will meet with their assigned mentor weekly for one-on-one meetings to draft, edit, and revise essays for their college applications. These meetings will be set up with your mentor based on your availability.</p>
+					<p>A syllabus of weekly assigned topics/short assignments for the student will be provided. These topics will cover college essay questions that require pulling from your personal experiences.</p>
+					<p class="bold">If you are interested, please click the button below and fill out the Google Form.</p>
+					<a class="bold button solid magenta" href="https://docs.google.com/forms/d/e/1FAIpQLSd46rkyUPxpQ0fYvBLLBPpg804v7a4SIg-AV7yipZACpAsXCw/viewform?usp=sf_link" target="_blank">Get Started</a>
+				</div>
+			</div>
+
+			<div class="block hero right">
+				<div>
+					<h2 class="magenta nunito">For Mentors</h2>
+					<p>Mentors will hold weekly one-on-one meetings with their assigned student to draft, edit, and revise essays for their college applications.</p>
+					<p>A syllabus of weekly assigned topics/assignments for the student will be provided and serve as a guide for mentors. These topics will cover college essay questions, identities, adversity, and more.</p>
+					<p class="bold">We encourage BIPOC and individuals from low-income backgrounds to apply.</p>
+					<p>This program has a flexible schedule. You will work with the student to find a time that works best to meet virtually. Mentors are expected to attend monthly meetings for check-ins. These meetings will be scheduled ahead of time based on your availability.</p>
+					<p>This is a volunteer position and you will not be compensated.</p>
+					<p class="bold">If you are interested, please click the button below and fill out the Google Form.</p>
+					<a class="bold button solid magenta" href="https://docs.google.com/forms/d/e/1FAIpQLSeX0ydxFGPY57UnnWtR1db9xkvBkfJdSDJWS3rL8AG0JPCQUA/viewform?usp=sf_link" target="_blank">Become A Mentor</a>
+				</div>
+
+				<img src="./img/mentor.png" alt="mentor" aria-hidden="true">
+			</div>
+
+			<div class="banner" id="contact">
+				<div class="block hero" style="flex-direction: column;">
+					<div>
+						<h2>Contact Us!</h2>
+						<p>Email our program director Sandy Lor at sandylor24@gmail.com or sign-up using the form below.</p>
+						<a class="bold button solid" href="mailto:sandylor24@gmail.com">Email</a>
+						<a class="bold button" href="#sign-up">Sign-Up</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="block hero left" id="sign-up">
+				<img src="./img/signup.png" alt="signup" aria-hidden="true">
+
+				<div>
+					<h2 class="magenta nunito">Sign-Up Today!</h2>
+					<p>Fill out the form below to sign-up as a student or mentor. Forms are reviewed on a rolling basis, so sign-up today!</p>
+					<a class="bold button solid" href="https://docs.google.com/forms/d/e/1FAIpQLSd46rkyUPxpQ0fYvBLLBPpg804v7a4SIg-AV7yipZACpAsXCw/viewform?usp=sf_link" target="_blank">I'm A Student</a>
+					<a class="bold button magenta" href="https://docs.google.com/forms/d/e/1FAIpQLSeX0ydxFGPY57UnnWtR1db9xkvBkfJdSDJWS3rL8AG0JPCQUA/viewform?usp=sf_link" target="_blank">I'm A Mentor</a>
 				</div>
 			</div>
 		</div>
 
-		<div class="block hero left" id="sign-up">
-			<img src="./img/signup.png" alt="signup" aria-hidden="true">
+		<div class="ease" id="loader">
 
-			<div>
-				<h2 class="magenta nunito">Sign-Up Today!</h2>
-				<p>Fill out the form below to sign-up as a student or mentor. Forms are reviewed on a rolling basis, so sign-up today!</p>
-				<a class="bold button solid" href="https://docs.google.com/forms/d/e/1FAIpQLSd46rkyUPxpQ0fYvBLLBPpg804v7a4SIg-AV7yipZACpAsXCw/viewform?usp=sf_link" target="_blank">I'm A Student</a>
-				<a class="bold button magenta" href="https://docs.google.com/forms/d/e/1FAIpQLSeX0ydxFGPY57UnnWtR1db9xkvBkfJdSDJWS3rL8AG0JPCQUA/viewform?usp=sf_link" target="_blank">I'm A Mentor</a>
-			</div>
 		</div>
 
 	</body>
