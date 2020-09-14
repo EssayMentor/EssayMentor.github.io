@@ -29,7 +29,7 @@
 				margin: 0;
 				overflow: hidden;
 			}
-			h1, h2, h3 {
+			h1, h2, h3, h4 {
 				margin: 0;
 			}
 			h1 {
@@ -38,6 +38,10 @@
 			}
 			h2 {
 				font-weight: 700;
+			}
+			h4 {
+				font-size: 1.4em;
+				opacity: 0.6;
 			}
 			ul {
 				list-style: none;
@@ -55,6 +59,12 @@
 			a {
 				color: #434343;
 				text-decoration: none;
+
+				-webkit-transition: all 300ms ease;
+				-moz-transition: all 300ms ease;
+				-ms-transition: all 300ms ease;
+				-o-transition: all 300ms ease;
+				transition: all 300ms ease;
 			}
 			a:hover {
 				opacity: 0.8;
@@ -81,9 +91,9 @@
 			}
 			.button {
 				border: 2px solid #ff5b97;
-				border-radius: 4px;
+				border-radius: 2em;
 				font-size: 0.8em;
-				padding: 4px 12px;
+				padding: 1em 2.4em;
 				text-transform: uppercase;
 			}
 			.button.solid {
@@ -97,6 +107,13 @@
 				-o-transition: all 500ms ease;
 				transition: all 500ms ease;
 			}
+			.ease-fast {
+				-webkit-transition: all 300ms ease;
+				-moz-transition: all 300ms ease;
+				-ms-transition: all 300ms ease;
+				-o-transition: all 300ms ease;
+				transition: all 300ms ease;
+			}
 			.indigo {
 				color: #2a1e68;
 			}
@@ -107,10 +124,12 @@
 				font-family: 'Nunito', sans-serif;
 			}
 			.banner {
+				padding: 8px 12px;
+				text-align: center;
+			}
+			.banner.indigo {
 				background-color: #2a1e68;
 				color: white;
-				padding: 4px 12px;
-				text-align: center;
 			}
 			.banner .button {
 				border: 2px solid white;
@@ -118,6 +137,10 @@
 			}
 			.banner .button.solid {
 				background-color: white;
+				color: #2a1e68;
+			}
+			.banner .button.indigo {
+				border: 2px solid #2a1e68;
 				color: #2a1e68;
 			}
 			.header {
@@ -133,6 +156,28 @@
 				display: inline-block;
 				margin: 2.8em 12px 0 0;
 			}
+			.grid {
+				text-align: left;
+			}
+			.grid > div {
+				display: inline-block;
+				margin-top: 2em;
+				width: 49%;
+			}
+			.grid > div div {
+				display: inline-block;
+				width: 80%;
+			}
+			.grid img {
+				margin-right: 1em;
+				vertical-align: top;
+			}
+			.grid p {
+				margin: 0.4em 0 0;
+			}
+			.paypal-button:hover {
+				opacity: 0.8;
+			}
 			#loader {
 				background-color: white;
 				height: 100%;
@@ -145,11 +190,24 @@
 				.header ul {
 					display: none;
 				}
+				.block {
+					padding: 20px 30px;
+				}
 				.block img {
 					display: none;
 				}
 				.block > div {
 					padding: 0 !important;
+				}
+				.grid img {
+					display: inline-block;
+				}
+				.grid > div {
+					margin-top: 0;
+					width: 100%;
+				}
+				.grid > div div {
+					width: calc(100% - 50px) !important;
 				}
 			}
 		</style>
@@ -168,12 +226,12 @@
 	</head>
 	<body onload="onLoad()">
 		<div style="height: 100%; overflow: auto;">
-			<div class="banner" style="margin-bottom: 10px;">
+			<div class="banner indigo" style="margin-bottom: 10px;">
 				This program will run throughout the 2020-2021 school year.
 			</div>
 			<div class="block header">
 				<span class="magenta" style="font-size: 18px;">
-					<img src="./img/book.png" alt="book-open" width="20" height="15" aria-hidden="true">
+					<img src="./img/book.png" alt="book-open" width="20" height="15" aria-hidden="true" style="display: inline-block !important; margin-right: 0.2em;">
 					<span class="bold nunito">EssayMentor.org</span>
 				</span>
 				<ul>
@@ -183,9 +241,9 @@
 					<li>
 						<a href="#contact">Contact</a>
 					</li>
-					<!--li>
-						<a>Resources</a>
-					</li-->
+					<li>
+						<a href="#resources">Resources</a>
+					</li>
 					<li>
 						<a class="bold" href="#sign-up">Sign-Up</a>
 					</li>
@@ -195,7 +253,7 @@
 							<input type="hidden" name="business" value="TCL7ZTS9YAJ82"/>
 							<input type="hidden" name="item_name" value="Essay Mentor"/>
 							<input type="hidden" name="currency_code" value="USD"/>
-							<input type="image" src="./img/donate.png" border="0" height="28" width="76" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"/>
+							<input type="image" class="ease-fast paypal-button" src="./img/donate.png" border="0" height="40" width="110" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"/>
 						</form>
 					</li>
 				</ul>
@@ -226,7 +284,7 @@
 				</div>
 			</div>
 
-			<div class="block hero right">
+			<div class="block hero right" style="margin-bottom: 2.4%;">
 				<div>
 					<h2 class="magenta nunito">For Mentors</h2>
 					<p>Mentors will hold weekly one-on-one meetings with their assigned student to draft, edit, and revise essays for their college applications.</p>
@@ -241,13 +299,68 @@
 				<img src="./img/mentor.png" alt="mentor" aria-hidden="true">
 			</div>
 
-			<div class="banner" id="contact">
-				<div class="block hero" style="flex-direction: column;">
+			<div class="banner indigo" id="contact">
+				<div class="block hero" style="flex-direction: column; margin-bottom: 2.4%;">
 					<div>
 						<h2>Contact Us!</h2>
-						<p>Email our program director Sandy Lor at sandylor24@gmail.com or sign-up using the form below.</p>
-						<a class="bold button solid" href="mailto:sandylor24@gmail.com">Email sandylor24@gmail.com</a>
+						<p>Email our program director Sandy Lor at sandy@essaymentor.org or sign-up using the form below.</p>
+						<a class="bold button solid" href="mailto:sandy@essaymentor.org">Email Us</a>
+						<a class="bold button" href="#sign-up">Sign-Up</a>
 					</div>
+				</div>
+			</div>
+
+			<div class="banner" id="resources">
+				<div class="block hero" style="flex-direction: column;">
+					<div>
+						<h2>Resources</h2>
+						<p>Here is a list of our recommended resources for building a collaborative online workspace.</p>
+					</div>
+
+					<div class="grid">
+
+						<div>
+							<a href="https://docs.google.com/" target="_blank">
+								<img src="./img/document.png" alt="document" height="32" width="24" aria-hidden="true">
+								<div>
+									<h4>Google Docs</h4>
+									<p>Anyone with a Gmail account can access Google Docs to work together on a single word document.</p>
+								</div>
+							</a>
+						</div>
+
+						<div>
+							<a href="https://hangouts.google.com/" target="_blank">
+								<img src="./img/camera.png" alt="camera" height="18" width="28" aria-hidden="true">
+								<div>
+									<h4>Google Hangouts</h4>
+									<p>Anyone with a Gmail account can access Google Hangouts to video chat at any time.</p>
+								</div>
+							</a>
+						</div>
+
+						<div>
+							<a href="https://www.skype.com/" target="_blank">
+								<img src="./img/skype.png" alt="skype" height="28" width="28" aria-hidden="true">
+								<div style="margin-left: -0.4em;">
+									<h4>Skype</h4>
+									<p>Skype offers free accounts for unlimited video chat as long as both users are using Skype.</p>
+								</div>
+							</a>
+						</div>
+
+						<div>
+							<a href="https://zoom.us/" target="_blank">
+								<img src="./img/camera.png" alt="camera" height="18" width="28" aria-hidden="true">
+								<div>
+									<h4>Zoom</h4>
+									<p>Zoom offers free accounts for video chat, although time limitations may apply.</p>
+								</div>
+							</a>
+						</div>
+
+					</div>
+
 				</div>
 			</div>
 
@@ -260,14 +373,14 @@
 						<input type="hidden" name="business" value="TCL7ZTS9YAJ82"/>
 						<input type="hidden" name="item_name" value="Essay Mentor"/>
 						<input type="hidden" name="currency_code" value="USD"/>
-						<input type="image" src="./img/donate.png" border="0" height="28" width="76" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"/>
+						<input type="image" class="ease-fast paypal-button" src="./img/donate.png" border="0" height="40" width="110" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"/>
 					</form>
 				</div>
 
-				<img src="./img/donate-temp.png" alt="signup" aria-hidden="true">
+				<img src="./img/love.png" alt="signup" aria-hidden="true">
 			</div>
 
-			<div class="block hero left" id="sign-up">
+			<div class="block hero left" id="sign-up" style="margin-bottom: 2.4%;">
 				<img src="./img/signup.png" alt="signup" aria-hidden="true">
 
 				<div>
